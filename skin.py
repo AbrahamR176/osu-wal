@@ -4,6 +4,9 @@ from os import path
 import fileinput
 import threading
 
+path = '/home/abrahamr/Desktop/osu!/Skins/BubbleGum/' #path of the skin to use as base.
+newpath = "/home/abrahamr/Desktop/osu!/Skins/done/" #path of the new skin folder to be created.
+
 def convert(item, color):
     if ".png" in item:
         os.system("convert " + item  + " -colorspace Gray -fill \"rgb" + color + "\" -tint 100 " + "-set filename:basename \"%[basename]\" \"%[filename:basename].png\"")
@@ -41,8 +44,6 @@ h = (lines[1]).lstrip('#')
 rgb1 = tuple(int(h[i:i+2], 16) for i in (0,2,4))
 
 #Variable creation
-path = '/home/abrahamr/Desktop/osu!/Skins/BubbleGum/'
-newpath = "/home/abrahamr/Desktop/osu!/Skins/done/"
 images,judges,rest,judgepath,restpath,threads = [],[],[],[],[],[]
 
 for root, directories, files in os.walk(path, topdown=True):
